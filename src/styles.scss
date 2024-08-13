@@ -1,0 +1,63 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --primary-color: #0096ae;
+  --primary-color-darker: #017182;
+
+  --light-gray-color: #f9fafb; // Mainly used for backgrounds
+  --dark-gray-color: #8c8e93;
+  --gray-color: #d0d5dd;
+
+  // status
+  --success-color: #4caf50;
+  --info-color: #2196f3;
+  --warning-color: #ffeb3b;
+  --danger-color: #f44336;
+
+  --in-progress-color: #b2ddff;
+  --in-progress-color-darker: #175cd3;
+  --in-review-color: #99cad7;
+  --in-review-color-darker: #006e80;
+  --incomplete-color: #fedf89;
+  --incomplete-color-blur: #fffaeb;
+  --incomplete-color-darker: #b54708;
+  --assigned-color: #d5d9eb;
+  --assigned-color-darker: #363f72;
+  --cancelled-color: #fecdca;
+  --cancelled-color-darker: #b42318;
+  --in-review-cl-color: #d9d6fe;
+  --in-review-cl-color-darker: #5925dc;
+  --in-review-jc-color: #fcceee;
+  --in-review-jc-color-darker: #c11574;
+  --pending-color: #c7d7fe;
+  --pending-color-darker: #3538cd;
+  --supplier-signature-color: #b9e6fe;
+  --supplier-signature-color-darker: #026aa2;
+  --done-color: #abefc6;
+  --done-color-darker: #067647;
+
+  // typography
+  --font-size: 1rem;
+  --line-height: 1.5;
+  --text-color: #344054;
+  --text-color-dark: #101828;
+  --text-color-light: #667085;
+  --text-color-muted: #d0d5dd;
+
+  // shadows
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Main */
+body {
+  color: var(--text-color);
+  font-family: "Inter", sans-serif;
+}
+
+button.primary-btn {
+  background-color: var(--primary-color);
+  color: white;
+}
+button.primary-btn:hover {
+  background-color: var(--primary-color-darker);
+  color: white;
+}

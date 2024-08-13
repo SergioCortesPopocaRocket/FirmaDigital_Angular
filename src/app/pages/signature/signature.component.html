@@ -1,0 +1,140 @@
+<div class="container-fluid mt-3">
+  <div class="row">
+    <div class="col-12 col-md-12 col-lg-12">
+      <div class="b shadow-lg p-3 rounded-3">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+
+                <div class="text-center fs-4 fw-normal">Document</div>
+                <form [formGroup]="sessionSignDoc">
+                  <div class="row">
+                  <div class="col-12 col-md-12 text-center mt-4">
+                    <label class="fw-normal fs-5">Document PDF </label>
+                    <input type="file" id="userDoc2s" accept=".pdf" formControlName="doc2sign" class="form-control"
+                      (change)="onPdfSelect($event)" />
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-6 text-center mt-4">
+                    <label class="fw-normal fs-5">Total signers </label>
+                    <input type="number" id="userSigners" formControlName="userSigners" class="form-control" />
+                  </div>
+
+                  <div class="col-12 col-sm-12 col-md-6 text-center mt-4">
+                    <label class="fw-normal fs-5">Hash Algorithm</label>
+                    <select class="form-select" aria-label="Default select example" formControlName="hashAlg">
+                      <option value="SHA1">SHA-1</option>
+                      <option value="SHA256" selected>SHA-256</option>
+                      <option value="SHA384">SHA-384</option>
+                      <option value="SHA512">SHA-512</option>
+                    </select>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-6 text-center mt-4">
+                    <label class="fw-normal fs-5">PDF password </label>
+                    <input type="password" id="userPdfPassword" formControlName="pdfPassword" class="form-control" />
+                  </div>
+                  <div class="col-12  col-sm-12 col-md-6 mt-auto d-flex justify-content-end mt-4">
+                    <button class="btn primary-btn col-4 col-md-4 mt-3" type="button" (click)="onSubmitFile()" [disabled]="getHashBt">
+                      Get Hash
+                    </button>
+                  </div>
+                </div>
+                </form>
+
+
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+              <div class="text-center fs-4 fw-normal mt-2">
+                Digital Signature PKCS7
+              </div>
+              <form [formGroup]="sessionFormSD" class="d-flex flex-column">
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-6 text-center mt-4">
+                    <label class="fw-normal fs-5">Private Key File </label>
+                    <input type="file" id="userPk" accept=".key" formControlName="userPk"
+                     class="form-control" (change)="handleParsingPrivKeyFile($event)"/>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-6 text-center mt-4">
+                    <label class="fw-normal fs-5">Certificate file</label>
+                    <input type="file" id="userCf" accept=".cer" formControlName="userCf"
+                    class="form-control" (change)="handleParsingCertFile($event)" />
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-6 text-center mt-4">
+                    <label class="fw-normal fs-5">Private Key Password</label>
+                    <div class="input-group">
+                      <input type="password" id="userPkp" formControlName="userPkp" class="form-control" />
+                      <div class="input-group-append">
+                        <i class="bi bi-eye-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-6 text-center mt-4">
+                    <label class="fw-normal fs-5">Sign Location</label>
+                    <div class="input-group">
+                      <input type="text" id="userSignLocation" formControlName="userSignLocation" class="form-control" />
+                      <div class="input-group-append">
+                        <i class="bi bi-eye-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-6 text-center mt-4">
+                    <label class="fw-normal fs-5">SignerName</label>
+                    <div class="input-group">
+                      <input type="text" id="userSignName" formControlName="userSignName" class="form-control" />
+                      <div class="input-group-append">
+                        <i class="bi bi-eye-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-6 text-center mt-4">
+                    <label class="fw-normal fs-5">Signature Reason</label>
+                    <div class="input-group">
+                      <input type="text" id="userSignReason" formControlName="userSignReason" class="form-control" />
+                      <div class="input-group-append">
+                        <i class="bi bi-eye-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-6 text-center mt-4">
+                    <label class="fw-normal fs-5">Evidence Type</label>
+                    <div class="input-group">
+                      <input type="text" id="userSignEvType" formControlName="userSignEvType" class="form-control" />
+                      <div class="input-group-append">
+                        <i class="bi bi-eye-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-6 text-center mt-4">
+                    <label class="fw-normal fs-5">Signature Image</label>
+                    <div class="input-group">
+                      <input type="file" id="userSignImage" accept="image/jpg,image/png,image/jpeg"
+                      formControlName="userSignImage" class="form-control" (change)="hanfleParseImageTob64($event)"/>
+                      <div class="input-group-append">
+                        <i class="bi bi-eye-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-6 text-center mt-4">
+                    <label class="fw-normal fs-5">Biometric Data</label>
+                    <div class="input-group d-flex justify-content-center">
+                      <input type="checkbox" id="userSignBiData" formControlName="userSignBiData" class="form-check-input" />
+                      <div class="input-group-append">
+                        <i class="bi bi-eye-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-6 mt-auto d-flex justify-content-end mt-4">
+                    <button class="btn primary-btn col-4 col-md-4 mt-3" type="button" (click)="onSubmitDigitalSign()">
+                      Sign File
+                    </button>
+                  </div>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
